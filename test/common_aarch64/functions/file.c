@@ -20,6 +20,12 @@
 // CONSTANT stdout 1
 // CONSTANT stderr 2
 // CONSTANT EOF 0xFFFFFFFF
+#define stdin 0
+#define stdout 1
+#define stderr 2
+#define EOF -1
+
+#define FILE long
 
 int fgetc(FILE* f)
 {
@@ -112,6 +118,8 @@ int fflush(FILE *stream){
 // CONSTANT SEEK_SET 0
 // CONSTANT SEEK_CUR 1
 // CONSTANT SEEK_END 2
+#define SEEK_SET 0
+
 
 int fseek(FILE* f, long offset, int whence)
 {

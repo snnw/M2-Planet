@@ -16,6 +16,7 @@
  */
 
 // CONSTANT NULL 0
+#define NULL 0
 
 int brk(void *addr)
 {

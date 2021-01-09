@@ -1,4 +1,4 @@
-/* Copyright (C) 2020 deesix <deesix@tuta.io>
+/* Copyright (C) 2016 Jeremiah Orians
  * This file is part of M2-Planet.
  *
  * M2-Planet is free software: you can redistribute it and/or modify
@@ -14,16 +14,33 @@
  * You should have received a copy of the GNU General Public License
  * along with M2-Planet.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include<stdio.h>
 
-// CONSTANT EXIT_FAILURE 1
-// CONSTANT EXIT_SUCCESS 0
-#define EXIT_FAILURE 1
-#define EXIT_SUCCESS 0
+char global[32];
 
-
-void exit(int value)
+void write_string(char* c, FILE* f)
 {
-	asm("SET_X0_FROM_BP" "SUB_X0_8" "DEREF_X0"
-	    "SET_X8_TO_SYS_EXIT"
-	    "SYSCALL");
+	while(0 != c[0])
+	{
+		fputc(c[0], f);
+		c = c + 1;
+	}
+}
+
+void strcpy(char* a, char* b)
+{
+	while(0 != b[0])
+	{
+		a[0] = b[0];
+		a = a + 1;
+		b = b + 1;
+	}
+}
+
+int main()
+{
+	strcpy(global, "hello global\n");
+	write_string(global, stderr);
+
+	return 0;
 }
